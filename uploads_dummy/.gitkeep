@@ -1,0 +1,3 @@
+# --- Data/User Uploads ---
+uploads/*
+!uploads/.gitkeep
