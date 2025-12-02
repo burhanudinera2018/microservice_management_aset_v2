@@ -1,0 +1,20 @@
+# --- Environment Files & Credentials ---
+.env
+*/.env
+.flaskenv
+
+# --- Dependency Folders (Virtual Environments) ---
+# Folder venv di root/management_service/venv_m dan pricing_service/venv
+venv
+venv_m
+*/venv
+*/venv_m
+
+# --- Python & IDE Files ---
+__pycache__/
+*.pyc
+*.pyo
+*~
+.ipynb_checkpoints
+.DS_Store
+.vscode/

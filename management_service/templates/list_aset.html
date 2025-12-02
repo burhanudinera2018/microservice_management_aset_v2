@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Daftar Aset Sawah{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Daftar Aset Sawah</h3>
+    <a href="{{ url_for('aset.tambah_aset') }}" class="btn btn-success">+ Tambah Aset</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Nama Sebutan</th>
+            <th>Nomor Sertifikat</th>
+            <th>Luas (m²)</th>
+            <th>Lokasi</th>
+            <th>Status</th>
+            <th>Tindakan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in data %}
+        <tr>
+            {# a[0] adalah objek AsetSawah, a.longitude/a.latitude adalah nilai dari query #}
+            <td>{{ a[0].aset_id }}</td>
+            <td>{{ a[0].nama_sebutan }}</td>
+            <td>{{ a[0].nomor_sertifikat }}</td>
+            <td>{{ a[0].luas_m2 }}</td>
+            <td>
+            
+            {% set lon = a.longitude %} 
+            {% set lat = a.latitude %}
+            
+            {% if lon is not none and lat is not none %}
+                {# Menggunakan format Google Maps yang standar #}
+                <a href="https://maps.google.com/?q={{ lat }},{{ lon }}" target="_blank" class="btn btn-sm btn-outline-info shadow-sm">
+                    <i class="fas fa-map-marker-alt"></i> Lihat Peta
+                </a>
+                <small class="text-muted d-block mt-1">
+                    ({{ lat | round(5) }}, {{ lon | round(5) }})
+                </small>
+            {% else %}
+                Lokasi Belum Diatur
+            {% endif %}
+            
+            </td>
+            <td>{{ a[0].status_sewa }}</td>
+            <td>
+                <a href="{{ url_for('aset.edit_aset', aset_id=a[0].aset_id) }}" class="btn btn-sm btn-outline-success">Edit</a>
+                <form action="{{ url_for('aset.delete_aset', aset_id=a[0].aset_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?')">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center text-muted">Belum ada data aset.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

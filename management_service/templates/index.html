@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Manajemen Aset Sawah{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body text-center py-5">
+                <h1 class="display-4 text-success">Selamat Datang</h1>
+                <p class="lead">Sistem Manajemen Aset Sawah Keluarga</p>
+                
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Aset Sawah</h5>
+                                <p class="card-text">Kelola data sawah dan properti</p>
+                                <a href="{{ url_for('aset.list_aset') }}" class="btn btn-success">Lihat Aset</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Data Penyewa</h5>
+                                <p class="card-text">Kelola informasi penyewa</p>
+                                <a href="{{ url_for('penyewa.list_penyewa') }}" class="btn btn-success">Lihat Penyewa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Transaksi</h5>
+                                <p class="card-text">Kelola transaksi sewa</p>
+                                <a href="{{ url_for('transaksi.list_transaksi') }}" class="btn btn-success">Lihat Transaksi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">Pengaturan Harga</h5>
+                                <p class="card-text">Kelola riwayat penetapan harga sewa.</p>
+                                <a href="http://127.0.0.1:5003/pengaturan/harga/list" target="_blank" class="btn btn-outline-success mt-2">
+                                    <i class="fas fa-cog"></i> Buka Pengaturan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

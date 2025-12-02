@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Form Aset Sawah{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="mb-4">Form Aset Sawah</h4>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-6">{{ form.nama_sebutan.label }} {{ form.nama_sebutan(class="form-control") }}</div>
+                <div class="col-md-6">{{ form.nomor_sertifikat.label }} {{ form.nomor_sertifikat(class="form-control") }}</div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-4">{{ form.luas_m2.label }} {{ form.luas_m2(class="form-control") }}</div>
+                <div class="col-md-4">{{ form.status_sewa.label }} {{ form.status_sewa(class="form-select") }}</div>
+            </div><br>
+            <div class="mb-3">{{ form.lokasi.label }} {{ form.lokasi(class="form-control") }}</div>
+            <div class="mb-3">{{ form.tanaman_saat_ini.label }} {{ form.tanaman_saat_ini(class="form-control") }}</div>
+            <button type="submit" class="btn btn-success">{{ form.submit.label.text }}</button>
+            <a href="{{ url_for('aset.list_aset') }}" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

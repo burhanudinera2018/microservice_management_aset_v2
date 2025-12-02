@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+python-dotenv
+psycopg2-binary
+GeoAlchemy2       # Wajib untuk tipe data spasial PostGIS
+requests          # Wajib untuk memanggil Pricing Service API

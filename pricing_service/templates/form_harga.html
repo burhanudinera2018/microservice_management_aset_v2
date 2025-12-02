@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3 class="mb-4">{{ title }}</h3>
+        <div class="card p-4">
+            <form method="POST" action="{{ url_for('harga.tambah_harga') }}"> 
+                {{ form.hidden_tag() }}
+                
+                <h4>Data Penetapan Harga Baru</h4>
+                <hr>
+
+                <div class="mb-3">
+                    {{ form.harga_per_boto.label(class="form-label") }}
+                    {{ form.harga_per_boto(class="form-control", type="number", step="0.01") }} 
+                    {% for error in form.harga_per_boto.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                    <small class="form-text text-muted">Masukkan harga sewa per boto (contoh: 4000000.00)</small>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.tahun_penetapan.label(class="form-label") }}
+                    {{ form.tahun_penetapan(class="form-control", type="number") }} 
+                    {% for error in form.tahun_penetapan.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.tanggal_mulai_efektif.label(class="form-label") }}
+                    {{ form.tanggal_mulai_efektif(class="form-control") }} 
+                    {% for error in form.tanggal_mulai_efektif.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.tanggal_akhir_efektif.label(class="form-label") }}
+                    {{ form.tanggal_akhir_efektif(class="form-control") }}
+                    {% for error in form.tanggal_akhir_efektif.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <hr>
+
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

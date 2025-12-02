@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Daftar Penyewa{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Daftar Penyewa</h3>
+    <a href="{{ url_for('penyewa.tambah_penyewa') }}" class="btn btn-success">+ Tambah Penyewa</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Nama Lengkap</th>
+            <th>NIK</th>
+            <th>Alamat</th>
+            <th>Kontak</th>
+            <th>Dokumen KTP</th> {# 🚨 TAMBAH KOLOM HEADER INI 🚨 #}
+            <th>Tindakan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in data %}
+        <tr>
+            <td>{{ p.penyewa_id }}</td>
+            <td>{{ p.nama_lengkap }}</td>
+            <td>{{ p.nik }}</td>
+            <td>{{ p.alamat }}</td>
+            <td>{{ p.nomor_kontak }}</td>
+            {# 🚨 TAMBAH SEL DATA INI 🚨 #}
+            <td>
+                {% if p.link_ktp %}
+                    <a href="{{ p.link_ktp }}" target="_blank" class="btn btn-sm btn-outline-info">
+                        <i class="fas fa-file-alt"></i> Lihat Dokumen
+                    </a>
+                {% else %}
+                    Tidak Ada
+                {% endif %}
+            </td>
+            {# -------------------------- #}
+
+            <td>
+                <a href="{{ url_for('penyewa.edit_penyewa', penyewa_id=p.penyewa_id) }}" class="btn btn-sm btn-outline-success">Edit</a>
+                <form action="{{ url_for('penyewa.hapus_penyewa', penyewa_id=p.penyewa_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?')">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            {# 🚨 UBAH colspan menjadi 6 (6 kolom data + 1 kolom Tindakan) 🚨 #}
+            <td colspan="7" class="text-center text-muted">Belum ada data penyewa.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

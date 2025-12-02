@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Form Penyewa{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="mb-4">Form Penyewa</h4>
+        <form method="POST" enctype="multipart/form-data"> {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-6">{{ form.nama_lengkap.label }} {{ form.nama_lengkap(class="form-control") }}</div>
+                <div class="col-md-6">
+                    {{ form.nik.label }} 
+                    {{ form.nik(class="form-control") }}
+                    </div>
+            </div><br>
+            <div class="mb-3">{{ form.alamat.label }} {{ form.alamat(class="form-control", rows=3) }}</div>
+            <div class="mb-3">{{ form.nomor_kontak.label }} {{ form.nomor_kontak(class="form-control") }}</div>
+            
+            <div class="mb-3">
+                <label for="ktp_file" class="form-label">Lampiran KTP (Foto/Scan)</label>
+                <input type="file" class="form-control" name="ktp_file" id="ktp_file" accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+            
+            <button type="submit" class="btn btn-success">{{ form.submit.label.text }}</button>
+            <a href="{{ url_for('penyewa.list_penyewa') }}" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
