@@ -28,7 +28,7 @@
     - Tahun penetapan harga sewa
 - Bisa di jalankan di localhost dan bisa juga di letakkan pada free cloud server app
   * **Struktur Microservice** (Jelaskan ada `management_service` dan `pricing_service`).
-
+```
 MANAGEMENT_ASET_SAWAH (Root Directory)
 ├── database/                   # Skema dan migrasi database (misal: init.sql, migrasi/)
 ├── management_service/         # Microservice Utama (Manajemen Aset dan Transaksi)
@@ -54,7 +54,7 @@ MANAGEMENT_ASET_SAWAH (Root Directory)
 │   └── .gitkeep                # File dummy agar folder dilacak Git
 ├── .env.example                # Contoh template konfigurasi environment (TIDAK ADA credential sensitif)
 └── .gitignore                  # Daftar file/folder yang diabaikan Git (.env, venv, dll.)
-  
+```  
   * **Langkah Instalasi:**
     1.  `git clone ...`
     2.  `cd management_service`
