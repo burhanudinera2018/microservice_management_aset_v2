@@ -1,5 +1,7 @@
 * **Deskripsi Proyek**
-  
+
+  ![ChatGPT Image Jan 11, 2026, 05_26_32 AM](https://github.com/user-attachments/assets/c915b0e5-fba5-4438-9f8c-c9db64c25ca7)
+
 - Membangun sistem informasi pengelolaan aset lahan sawah menggunakan Python dan basis data PostgreSQL dengan ekstensi PostGIS dengan konsep Microservice,
 - Di dalam direktori proyek management_aset_sawah_v2.
 - Sistem ini akan mencatat properti lahan, detail sebagai berikut;
